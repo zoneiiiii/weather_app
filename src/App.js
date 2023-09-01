@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { React } from "react";
+import * as S from "./style/MainStyled";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./components/Main";
+import WeatherComponent from "./components/WeatherInfoComponent";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <S.VideoBackground>
+        <S.Video autoPlay loop muted>
+          <source src="/man_-_64729 (Original).mp4" type="video/mp4" />
+        </S.Video>
+      </S.VideoBackground>
+      <S.Container>
+        <Routes>
+          <Route index element={<Main />} />
+          <Route path="/weather" element={<WeatherComponent />} />
+        </Routes>
+      </S.Container>
+    </BrowserRouter>
   );
 }
-
 export default App;
